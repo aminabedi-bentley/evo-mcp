@@ -5,7 +5,7 @@ description = "An MCP server implementation using Evo SDK"
 license = "Apache-2.0"
 requires-python = ">=3.10"
 dependencies = [
-    "fastmcp>=3.2.4",
+    "fastmcp[code-mode]>=3.2.4",
     "google-adk==1.28.1",
     "evo-files>=0.2.4",
     "evo-compute>=0.0.4",
@@ -30,12 +30,21 @@ dev = [
     "ruff==0.15.4",
     "reuse",
 ]
+poc = [
+    "jupyterlab>=4",
+    "ipykernel>=6",
+]
 
 [tool.ruff]
 line-length = 120
 
 [tool.ruff.lint]
 extend-select = ["I", "RUF022"]
+
+[tool.ruff.lint.per-file-ignores]
+# Notebook cells are intentionally self-contained: each re-imports what it needs
+# That triggers cross-cell redefinition warnings (F811) which are by design for a teaching notebook.
+"**/*.ipynb" = ["F811"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["evo_mcp"]
