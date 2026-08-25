@@ -150,7 +150,7 @@ sequenceDiagram
     MCP-->>Client: OAuth metadata (issuer, endpoints, ...)
 
     Note over Client,MCP: 2. Dynamic Client Registration
-    Client->>MCP: POST /auth/register<br/>{redirect_uris, token_endpoint_auth_method: "none", ...}
+    Client->>MCP: POST /register<br/>{redirect_uris, token_endpoint_auth_method: "none", ...}
     MCP-->>Client: {client_id, ...}
 
     Note over Client,IMS: 3. Authorization Code + PKCE
